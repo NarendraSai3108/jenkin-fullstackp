@@ -41,18 +41,19 @@ pipeline {
 
         // ===== BACKEND DEPLOY =====
         stage('Deploy Backend to Tomcat') {
-            steps {
-                bat '''
-                if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war" (
-                 del /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war"
-                 )
-                if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi" (
-                 rmdir /S /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi"
-                 )
-                copy "BOOK-SPRINGBOOT\\target\\bookapi.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war"
-                '''
-            }
-        }
+    steps {
+        bat """
+        if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war" (
+            del /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war"
+        )
+        if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi" (
+            rmdir /S /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi"
+        )
+        copy "BOOK-SPRINGBOOT\\target\\bookapi.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\bookapi.war"
+        """
+    }
+}
+
 
     }
 
