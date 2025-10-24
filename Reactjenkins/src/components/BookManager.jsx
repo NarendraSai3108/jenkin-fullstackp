@@ -11,7 +11,7 @@ const BookManager = () => {
   const [message, setMessage] = useState('');
   const [editMode, setEditMode] = useState(false);
 
-  const baseUrl = `${config.url}/bookapi`;
+  const baseUrl = `${config.url}`;
 
   useEffect(() => { fetchAllBooks(); }, []);
 
